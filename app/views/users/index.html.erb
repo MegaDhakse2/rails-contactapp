@@ -1,0 +1,81 @@
+<p style="color: green"><%= notice %></p>
+<div class="container-md ">
+<div class="row align-items-start">
+<div class="col-5">
+<h1  >Contacts</h1>
+
+<div class="container flex">
+<div  id="users" >
+  <% @users.each do |user| %>
+    <%= link_to user.FirstName, user, class:"text-decoration-none" %>
+     &nbsp;
+    <%= link_to user.LastName, user, class:"text-decoration-none" %>
+     <br>
+    <%= user.Mobile%>
+    <br>
+  <% end %>
+    <%= link_to "Create New Contact", new_user_path, class:"btn btn-outline-primary btn-sm rounded-2" %>
+
+</div> <%# users %>
+</div><%# container%>
+
+</div><%# col-5 %>
+
+<div class="col-7">
+<div class=" container">
+<div class="slideshow-container">
+
+    <div class="mySlides fade">
+      <img src="library2.jpg" class="img" >
+    </div>
+
+    <div class="mySlides fade">
+      <img src="idea.jpg" class="img">
+    </div>
+
+    <div class="mySlides fade">
+      <img src="books.jpg" class="img" >
+    </div>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+</div><%# container%>
+</div><%# col-7 %>
+</div><%# row %>
+
+<div class="row" id="whole">
+
+<div class="container" id="cards">
+  <% @users.each do |user| %>
+<div class="card" style="width: 16rem;">
+<%= image_tag user.avatar, class:"card-img-top", alt:"Profile Image", :style => " height:170px"%>
+
+  <%# <img src=user.avatar class="card-img-top" alt="..."> %>
+  <div class="card-body">
+    <h5 class="card-title">
+    <%= link_to user.FirstName, user, class:"text-decoration-none" %>
+     &nbsp;
+    <%= link_to user.LastName, user, class:"text-decoration-none" %>
+    </h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <%= link_to "Edit ", edit_user_path(user),  class:"badge bg-info" %>
+     <%= link_to "Delete", user, method: :delete, class:"badge bg-danger" %>
+  </div><%# card-body %>
+</div><%# card %>
+  <%end%>
+
+  <div>
+    <%= link_to "Create New Contact", new_user_path, class:"btn btn-info rounded-2" %>
+    <%# <%= link_to(image_tag("/apple.png", class: 'image-responsive'), new_user_path,  :method => :get, :style=> "height:50px") %>
+  </div>
+
+</div><%# container %>
+
+</div><%# row %>
+</div><%# container-md %>
